@@ -17,7 +17,7 @@ import org.testng.annotations.Test;
 
 public class TestNGTodo1 {
 
-    private ChromeDriver driver;
+    private RemoteWebDriver driver;
     private String Status = "failed";
 
     @BeforeMethod
@@ -40,64 +40,25 @@ public class TestNGTodo1 {
         ChromeOptions options = new ChromeOptions();
         options.merge(caps);
 
-        //driver = new RemoteWebDriver(new URL("https://" + username + ":" + authkey + hub), caps);
-        driver = new ChromeDriver(options);
+        driver = new RemoteWebDriver(new URL("https://" + username + ":" + authkey + hub), caps);
+        //driver = new ChromeDriver(options);
 
     }
 
     @Test
     public void basicTest() throws InterruptedException {
-        String spanText;
-        System.out.println("Loading Url");
+        String value = "Welcome to Lambda Test!";
 
-        driver.get("https://lambdatest.github.io/sample-todo-app/");
+        driver.get("https://www.lambdatest.com/selenium-playground/");
 
-        System.out.println("Checking Box");
-        driver.findElement(By.name("li1")).click();
+        driver.findElement(By.xpath("//a[contains(text(),'Simple Form Demo')]")).click();
+        Assert.assertEquals("The URL does not contain the text-simple-form-demo", driver.getCurrentUrl().contains("simple-form-demo"));
 
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li2")).click();
+        driver.findElement(By.cssSelector("#user-message")).sendKeys(value);
+        driver.findElement(By.id("showInput")).click();
 
-        System.out.println("Checking Box");
-        driver.findElement(By.name("li3")).click();
+        Assert.assertEquals(driver.findElement(By.id("message")).getText(), value);
 
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li4")).click();
-
-        driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 6");
-        driver.findElement(By.id("addbutton")).click();
-
-        driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 7");
-        driver.findElement(By.id("addbutton")).click();
-
-        driver.findElement(By.id("sampletodotext")).sendKeys(" List Item 8");
-        driver.findElement(By.id("addbutton")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li1")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li3")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li7")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li8")).click();
-        Thread.sleep(300);
-
-        System.out.println("Entering Text");
-        driver.findElement(By.id("sampletodotext")).sendKeys("Get Taste of Lambda and Stick to It");
-
-        driver.findElement(By.id("addbutton")).click();
-
-        System.out.println("Checking Another Box");
-        driver.findElement(By.name("li9")).click();
-
-        // Let's also assert that the todo we added is present in the list.
-
-        spanText = driver.findElementByXPath("/html/body/div/div/div/ul/li[9]/span").getText();
-        Assert.assertEquals("Get Taste of Lambda and Stick to It", spanText);
         Status = "passed";
         Thread.sleep(150);
 
