@@ -1,4 +1,4 @@
-# List the ports you want to expose and what to do when they are served. See https://www.gitpod.io/docs/config-ports/
+
 ports:
   - port: 3000
     onOpen: open-preview
@@ -7,3 +7,7 @@ ports:
 tasks:
   - init: mvn install -Dsuite=parallel.xml # runs during prebuild
     command: echo 'Please check your test on https://automation.lambdatest.com/'
+
+vscode:
+  extensions:
+    - vscjava.vscode-java-test
