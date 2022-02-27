@@ -8,12 +8,12 @@ tasks:
   - name: Set the Username Environment Variable
     env:
       LT_USERNAME: "taufiq.maredia786"
-    command: echo export $LT_USERNAME
+    init: echo export $LT_USERNAME
 
   - name: Set the Access Key Environment Variable
     env:
       LT_ACCESS_KEY: "tS0UIcAHxNNsAcA4qjmIaaEgCoJVnnxFfb5VmIlB980N9hUJaT"
-    command: echo export $LT_ACCESS_KEY  
+    init: echo export $LT_ACCESS_KEY  
   
   - init: mvn install -Dsuite=parallel.xml # runs during prebuild
     command: echo 'Please check your test on https://automation.lambdatest.com/'
