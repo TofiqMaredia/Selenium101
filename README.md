@@ -2,6 +2,12 @@
 # Selenium 101 Assignemnt
 
 ### Prerequisites
+    Shared this private Repository to "LambdaTest-Certifications"
+    
+### Assignment Tasks
+Test Scenario 1 - Completed
+Test Scenario 2 - Completed
+Test Scenario 3 - Completed (Cannot validate step 3. This is because on clicking submit "Please fill in the fields" error message is not displayed on the page.)
     
 ### Run your First Test
 1. Clone the Java-TestNG-Selenium repository. 
@@ -13,6 +19,9 @@ git clone https://github.com/LambdaTest/Java-TestNG-Selenium
    <b>For Linux/macOS:</b>:
  
 ```
+
+    
+    
 export LT_USERNAME="YOUR_USERNAME"
 export LT_ACCESS_KEY="YOUR ACCESS KEY"
 ```
@@ -23,11 +32,7 @@ export LT_ACCESS_KEY="YOUR ACCESS KEY"
 set LT_USERNAME="YOUR_USERNAME"
 set LT_ACCESS_KEY="YOUR ACCESS KEY"
 ```
-Step 3. Make sure to install the mandatory Selenium dependencies for Maven by running the below command.
-```
-mvn compile
-mvn versions:display-dependency-updates
-```
+
 ### Run Single Test
 Use the command below from the root of the project to run single tests.
 ```
