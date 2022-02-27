@@ -24,7 +24,7 @@ public class TestScenario2 {
     public void setup(Method m, ITestContext ctx) throws MalformedURLException {
         String username = System.getenv("LT_USERNAME") == null ? "Your LT Username" : System.getenv("LT_USERNAME");
         String authkey = System.getenv("LT_ACCESS_KEY") == null ? "Your LT AccessKey" : System.getenv("LT_ACCESS_KEY");
-        ;
+
         String hub = "@hub.lambdatest.com/wd/hub";
 
         DesiredCapabilities caps = new DesiredCapabilities();
@@ -34,6 +34,9 @@ public class TestScenario2 {
         caps.setCapability("build", "Selenium 101");
         caps.setCapability("name", m.getName() + " - " + this.getClass().getName());
         caps.setCapability("plugin", "git-testng");
+        caps.setCapability("console","true");
+	    caps.setCapability("network",true);
+	    caps.setCapability("visual",true);
 
         ChromeOptions options = new ChromeOptions();
         options.merge(caps);
@@ -51,27 +54,15 @@ public class TestScenario2 {
         driver.findElement(By.linkText("Drag & Drop Sliders")).click();
 
         {
-            WebElement element = driver.findElement(By.linkText("Bootstrap Modals"));
-            Actions builder = new Actions(driver);
-            builder.moveToElement(element).perform();
-        }
-        {
             WebElement element = driver.findElement(By.cssSelector(".sp__range-success > .sp__range"));
             Actions builder = new Actions(driver);
             builder.moveToElement(element).clickAndHold().perform();
-        }
-        {
-            WebElement element = driver.findElement(By.cssSelector(".sp__range-success > .sp__range"));
-            Actions builder = new Actions(driver);
-            builder.moveToElement(element).perform();
-        }
-        {
-            WebElement element = driver.findElement(By.cssSelector(".sp__range-success > .sp__range"));
-            Actions builder = new Actions(driver);
-            builder.moveToElement(element).release().perform();
+            builder.dragAndDropBy(element, 120, 6).perform();
         }
           
         String actual = driver.findElement(By.cssSelector("#rangeSuccess")).getText();
+
+        System.out.println("Validating whether the range value shows 95.");
         Assert.assertEquals(actual, "95");
 
         Status = "passed";

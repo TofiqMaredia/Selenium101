@@ -22,7 +22,7 @@ public class TestScenario1 {
     public void setup(Method m, ITestContext ctx) throws MalformedURLException {
         String username = System.getenv("LT_USERNAME") == null ? "Your LT Username" : System.getenv("LT_USERNAME");
         String authkey = System.getenv("LT_ACCESS_KEY") == null ? "Your LT AccessKey" : System.getenv("LT_ACCESS_KEY");
-        ;
+        
         String hub = "@hub.lambdatest.com/wd/hub";
 
         DesiredCapabilities caps = new DesiredCapabilities();
@@ -32,6 +32,9 @@ public class TestScenario1 {
         caps.setCapability("build", "Selenium 101");
         caps.setCapability("name", m.getName() + " - " + this.getClass().getName());
         caps.setCapability("plugin", "git-testng");
+        caps.setCapability("console","true");
+	    caps.setCapability("network",true);
+	    caps.setCapability("visual",true);
 
         ChromeOptions options = new ChromeOptions();
         options.merge(caps);
@@ -48,11 +51,15 @@ public class TestScenario1 {
         driver.get("https://www.lambdatest.com/selenium-playground/");
 
         driver.findElement(By.xpath("//a[contains(text(),'Simple Form Demo')]")).click();
-        // Assert.assertEquals("The URL does not contain the text-simple-form-demo", driver.getCurrentUrl().contains("simple-form-demo"));
+        Boolean containsText = driver.getCurrentUrl().contains("simple-form-demo");
+        
+        System.out.println("Validate that the URL contains simple-form-demo.");
+        Assert.assertTrue(containsText, "The URL does not contain the text simple-form-demo");
 
         driver.findElement(By.cssSelector("#user-message")).sendKeys(value);
         driver.findElement(By.id("showInput")).click();
 
+        System.out.println("Validate whether the same text message is displayed in the right-hand panel under the “Your Message:” section.");
         Assert.assertEquals(driver.findElement(By.id("message")).getText(), value);
 
         Status = "passed";

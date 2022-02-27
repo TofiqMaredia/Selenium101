@@ -23,7 +23,7 @@ public class TestScenario3 {
     public void setup(Method m, ITestContext ctx) throws MalformedURLException {
         String username = System.getenv("LT_USERNAME") == null ? "Your LT Username" : System.getenv("LT_USERNAME");
         String authkey = System.getenv("LT_ACCESS_KEY") == null ? "Your LT AccessKey" : System.getenv("LT_ACCESS_KEY");
-        ;
+        
         String hub = "@hub.lambdatest.com/wd/hub";
 
         DesiredCapabilities caps = new DesiredCapabilities();
@@ -33,6 +33,9 @@ public class TestScenario3 {
         caps.setCapability("build", "Selenium 101");
         caps.setCapability("name", m.getName() + " - " + this.getClass().getName());
         caps.setCapability("plugin", "git-testng");
+        caps.setCapability("console","true");
+	    caps.setCapability("network",true);
+	    caps.setCapability("visual",true);
 
         ChromeOptions options = new ChromeOptions();
         options.merge(caps);
@@ -46,9 +49,11 @@ public class TestScenario3 {
     public void basicTest() throws InterruptedException {
         
         driver.get("https://www.lambdatest.com/selenium-playground/");
-
+        
+        Thread.sleep(1000);
         driver.findElement(By.xpath("//a[contains(text(),'Input Form Submit')]")).click();
-
+        
+        Thread.sleep(1000);
         driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
 
         driver.findElement(By.id("name")).sendKeys("TestScenario3");
@@ -68,6 +73,8 @@ public class TestScenario3 {
         driver.findElement(By.id("inputZip")).sendKeys("S4S4H4");
         
         driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
+
+        System.out.println("validate the success message “Thanks for contacting us, we will get back to you shortly.” on the screen.");
         Assert.assertEquals(driver.findElement(By.cssSelector(".success-msg")).getText(), "Thanks for contacting us, we will get back to you shortly.");
 
         Status = "passed";
