@@ -2,26 +2,16 @@
 # Selenium 101 Assignemnt
 
 ### Prerequisites
-    Shared this private Repository to "LambdaTest-Certifications"
-    
-### Assignment Tasks
-Test Scenario 1 - Completed
-Test Scenario 2 - Completed
-Test Scenario 3 - Completed (Cannot validate step 3. This is because on clicking submit "Please fill in the fields" error message is not displayed on the page.)
-    
+Shared this private Repository to "LambdaTest-Certifications"
+
 ### Run your First Test
-1. Clone the Java-TestNG-Selenium repository. 
-```
-git clone https://github.com/LambdaTest/Java-TestNG-Selenium
-```
-2. Next get into Java-TestNG-Selenium folder, and import Lamabdatest Credentials. You can get these from lambdatest automation dashboard.
+1. Open up the Gitpod environment from Github Repository
+
+2. Set Lamabdatest Credentials. You can get these from lambdatest automation dashboard.
    <p align="center">
    <b>For Linux/macOS:</b>:
  
 ```
-
-    
-    
 export LT_USERNAME="YOUR_USERNAME"
 export LT_ACCESS_KEY="YOUR ACCESS KEY"
 ```
@@ -33,6 +23,7 @@ set LT_USERNAME="YOUR_USERNAME"
 set LT_ACCESS_KEY="YOUR ACCESS KEY"
 ```
 
+3. Run tests
 ### Run Single Test
 Use the command below from the root of the project to run single tests.
 ```
@@ -43,8 +34,17 @@ Use the command below from the root of the project to run parallel tests.
 ```
 mvn test -D suite=parallel.xml
 ```
-### Results
-You can check the test results on LambdaTest [Automation Dashboard](https://automation.lambdatest.com/build)
 
-## About LambdaTest
-[LambdaTest](https://www.lambdatest.com/) is a cloud based selenium grid infrastructure that can help you run automated cross browser compatibility tests on 2000+ different browser and operating system environments. LambdaTest supports all programming languages and frameworks that are supported with Selenium, and have easy integrations with all popular CI/CD platforms. It's a perfect solution to bring your [selenium automation testing](https://www.lambdatest.com/selenium-automation) to cloud based infrastructure that not only helps you increase your test coverage over multiple desktop and mobile browsers, but also allows you to cut down your test execution time by running tests on parallel.
+### Assignment Tasks
+1. Test Scenario 1 - Completed
+2. Test Scenario 2 - Completed
+3. Test Scenario 3 - Completed (Cannot validate step 3. This is because on clicking submit "Please fill in the fields" error message is not displayed on the page.)
+
+###  Results - Test Scenario's Parallel Execution Status on Lambda Automation Cloud Platform
+```
+mvn test -D suite=parallel.xml
+```
+
+1. Test Scenario 2 (basicTest) - Test Id - W7KVP-9ID2Q-U4N4Y-ZZTK5
+2. Test Scenario 3 (basicTest) - Test Id - 9WOUK-AWLNM-OLUQ6-O3FFP
+3. Test Scenario 1 (basicTest) - Test Id - 0PEB5-LSEDV-QNZRI-3MHTB
