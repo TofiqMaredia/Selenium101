@@ -5,24 +5,15 @@
 Shared this private Repository to "LambdaTest-Certifications"
 
 ### Run your First Test
-1. Open up the Gitpod environment from Github Repository
+1. Open up the Gitpod environment from Github Repository (Added the .gitpod.yml file to the Repo.)
 
-   This will build the complete project and will trigger build failure. This is because of  WebDriver Unauthorized, either Username or AccessKey.
+   This will install the maven dependencies and build the complete project and will trigger build failure. This is because of  WebDriver Unauthorized, either Username or AccessKey.
 
 2. Set Lamabdatest Credentials from the Gitpod VScode terminal. You can get these from lambdatest automation dashboard.
-   <p align="center">
-   <b>For Linux/macOS:</b>:
- 
+
 ```
 export LT_USERNAME="YOUR_USERNAME"
 export LT_ACCESS_KEY="YOUR ACCESS KEY"
-```
-<p align="center">
-   <b>For Windows:</b>
-
-```
-set LT_USERNAME="YOUR_USERNAME"
-set LT_ACCESS_KEY="YOUR ACCESS KEY"
 ```
 
 3. Run tests
